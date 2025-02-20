@@ -8,10 +8,6 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_IMAGE: asmuller-crypto/contentpilot
-      TAG: latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -27,5 +23,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            docker.io/${{ env.DOCKER_IMAGE }}:${{ env.TAG }}
+          tags: docker.io/asmuller-crypto/contentpilot:latest
