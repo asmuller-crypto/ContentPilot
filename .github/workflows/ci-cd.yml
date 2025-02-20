@@ -10,7 +10,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     env:
-      DOCKER_IMAGE: asmuller-crypto/contentpilot
+      DOCKER_IMAGE: salvimuller/contentpilot
       TAG: latest
 
     steps:
