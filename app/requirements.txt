@@ -1,0 +1,8 @@
+openai
+face_recognition
+python-dotenv
+opencv-python
+dlib
+pillow
+matplotlib
+selenium

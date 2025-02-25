@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    environment:
+      - API_KEY=${API_KEY}
+      - DISPLAY=${DISPLAY}  # Útil si se requiere GUI (en pruebas locales)
+    volumes:
+      - ./app:/app
+      - ./app/data:/app/data
+    ports:
+      - "5000:5000"
