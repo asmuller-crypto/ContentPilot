@@ -1,24 +1,24 @@
-# Usar imagen base ligera
 FROM python:3.9-slim
 
-# Instalar dependencias del sistema y librerías gráficas necesarias
+# Instalar dependencias del sistema necesarias para compilar dlib y otros paquetes
 RUN apt-get update && apt-get install -y \
-    libgl1 \
-    libsm6 \
-    libxext6 \
+    build-essential \
+    cmake \
+    libopenblas-dev \
+    liblapack-dev \
+    libx11-dev \
+    libgtk-3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copiar el contenido de la carpeta app al contenedor
+# Copiar la aplicación y archivos de datos al contenedor
 COPY ./app /app
-
-# Copiar archivos de datos (plantillas, etc.)
 COPY ./app/data /app/data
 
-# Instalar dependencias de Python
-RUN pip install --no-cache-dir -r requirements.txt
+# Actualizar pip y luego instalar las dependencias de Python
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 # Comando para ejecutar la aplicación
 CMD ["python", "main.py"]
